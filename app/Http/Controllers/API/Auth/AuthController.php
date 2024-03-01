@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\API\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\EmailVerificationNotification;
+use App\Notifications\RegisterNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 use App\RepositoriesInterfaces\UserRepositoryInterface;
 use Illuminate\Support\Facades\Validator;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
@@ -121,6 +121,8 @@ class AuthController extends Controller
         ]);
 
         $token = JWTAuth::fromUser($user);
+        $user->notify(new RegisterNotification());
+        $user->notify(new EmailVerificationNotification());
         return response()->json([
             'status' => 'success',
             'message' => 'User created successfully',
