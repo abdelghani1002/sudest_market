@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Contracts\Auth\CanResetPassword;
 
-class User extends Authenticatable Implements JWTSubject
+class User extends Authenticatable Implements JWTSubject, CanResetPassword
 {
     use HasApiTokens, HasFactory, Notifiable;
 

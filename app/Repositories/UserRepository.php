@@ -11,19 +11,24 @@ class UserRepository implements UserRepositoryInterface
 {
     protected $user = null;
 
-    public function list() : LengthAwarePaginator
+    public function list(): LengthAwarePaginator
     {
         return User::paginate(10);
     }
 
-    public function findById($id) : User
+    public function findById($id): User
     {
         return User::find($id);
     }
 
-    public function storeOrUpdate($id = null, $data = [] )
+    public function findByEmail($email): User
     {
-        if(is_null($id)) {
+        return User::where('email', $email)->first();
+    }
+
+    public function storeOrUpdate($id = null, $data = [])
+    {
+        if (is_null($id)) {
             $user = new User;
             $user->name = $data['name'];
             $user->email = $data['email'];
@@ -34,11 +39,11 @@ class UserRepository implements UserRepositoryInterface
         }
 
         $user = User::find($id);
-        $user->name = $data['name'];
-        $user->email = $data['email'];
-        $user->password = Hash::make('password');
+        if (!$user) {
+            return false;
+        }
+        $user->fill($data);
         $user->save();
-
         return $user;
     }
 

@@ -9,6 +9,7 @@ interface UserRepositoryInterface
 {
     public function list() : LengthAwarePaginator;
     public function findById($id) : User;
+    public function findByEmail($email) : User;
     public function storeOrUpdate($id = null, $collection = []);
     public function destroyById($object);
 }
