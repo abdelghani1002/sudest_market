@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* tags */
+li *{
+    overflow: hidden;
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 999999999999999999999;
+    height: 100%;
+    width: 100%;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.preloader .icon {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.preloader .icon img {
+    position: absolute;
+}
+
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.preloader .icon img {
+    animation: rotate360 2s infinite linear;
+}
+
+/* Scroll bar */
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}

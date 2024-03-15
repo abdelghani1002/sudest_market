@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/api', function () {
     return redirect("/api/documentation");
 });
+
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/dashboard', [AdminController::class, 'index']);
