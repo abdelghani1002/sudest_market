@@ -180,7 +180,7 @@
                             <th scope="row"
                                 class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+                                    src="{{ asset('default_user_photo.png') }}"
                                     alt="Jese image">
                                 <div class="ps-3">
                                     <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
@@ -212,7 +212,7 @@
                             <th scope="row"
                                 class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+                                    src="{{ asset('default_user_photo.png') }}"
                                     alt="Jese image">
                                 <div class="ps-3">
                                     <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
@@ -244,7 +244,7 @@
                             <th scope="row"
                                 class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+                                    src="{{ asset('default_user_photo.png') }}"
                                     alt="Jese image">
                                 <div class="ps-3">
                                     <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
@@ -276,7 +276,7 @@
                             <th scope="row"
                                 class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+                                    src="{{ asset('default_user_photo.png') }}"
                                     alt="Jese image">
                                 <div class="ps-3">
                                     <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
@@ -308,7 +308,7 @@
                             <th scope="row"
                                 class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
                                 <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+                                    src="{{ asset('default_user_photo.png') }}"
                                     alt="Jese image">
                                 <div class="ps-3">
                                     <div class="max-w-30 font-semibold">Salaheddine DAHA</div>

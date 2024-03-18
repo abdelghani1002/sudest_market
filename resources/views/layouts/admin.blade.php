@@ -31,11 +31,7 @@
 
 <body class="font-sans antialiased">
     {{-- Preloader --}}
-    <div id="preloader" class="preloader">
-        <div class="icon">
-            <img class="w-20" src="{{ asset('favicon.ico') }}" alt="">
-        </div>
-    </div>
+    <x-preloader />
 
     <div class="antialiased bg-gray-50 dark:bg-gray-900">
         <nav
@@ -83,7 +79,7 @@
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
                         <span class="sr-only">Open user menu</span>
                         <img class="w-8 h-8 rounded-full"
-                            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+                            src="{{ asset('default_user_photo.png') }}"
                             alt="user photo" />
                         <span class="hidden md:block p-2 text-gray-700 dark:text-gray-300">Admin</span>
                     </button>
