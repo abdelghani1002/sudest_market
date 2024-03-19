@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Traits\HasPermissionsTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +14,10 @@ use Illuminate\Contracts\Auth\CanResetPassword;
 
 class User extends Authenticatable Implements JWTSubject, CanResetPassword
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens,
+        HasFactory,
+        Notifiable,
+        HasPermissionsTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -63,5 +68,9 @@ class User extends Authenticatable Implements JWTSubject, CanResetPassword
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function city(){
+        return $this->belongsTo(City::class, 'city_id');
     }
 }
