@@ -16,7 +16,7 @@ class AuthController extends Controller
     protected $user_repository;
     public function __construct(UserRepositoryInterface $user)
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register', 'user']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
         $this->user_repository = $user;
     }
 
@@ -100,25 +100,25 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
+        $rules = [
+            'name' => 'required|string|min:2|max:50',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
-        ]);
+            'password_confirmation' => 'required|same:password',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
+            $errors = $validator->errors();
             return response()->json([
                 'status' => 'error',
-                'message' => 'Validation errors',
-                'errors' => $validator->errors(),
+                'message' => 'inputs validation errors',
+                'errors' => $errors,
             ], 422);
         }
 
-        $user = $this->user_repository->storeOrUpdate($id = null, [
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-        ]);
+        $user = $this->user_repository->storeOrUpdate($id = null, $request->all());
 
         $token = JWTAuth::fromUser($user);
         $user->notify(new RegisterNotification());

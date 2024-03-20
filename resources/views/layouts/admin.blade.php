@@ -99,7 +99,7 @@
                         </ul>
                         <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                             <li>
-                                <a href="#"
+                                <a href="{{ route("logout") }}"
                                     class="flex gap-2 py-2 px-4 text-sm hover:bg-green-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span>
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white rotate-180" aria-hidden="true"
