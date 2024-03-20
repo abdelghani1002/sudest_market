@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 // Auth routes
 Route::controller(AuthController::class)->group(function () {
-    Route::post('login', 'login');
-    Route::post('register', 'register');
+    Route::post('login', 'login')->name('login');
+    Route::post('register', 'register')->name('register');
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
     Route::get('user', 'user');
