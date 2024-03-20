@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,12 @@ Route::get('/api', function () {
     return redirect("/api/documentation");
 });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('/dashboard', [AdminController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
+
+Route::group(['middleware'=>"auth"], function(){
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+});
+
+require __DIR__ . '/auth.php';
