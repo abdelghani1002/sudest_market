@@ -208,7 +208,7 @@
                 </ul>
                 <ul class="pt-5 mt-5 space-y-2 border-t border-gray-200 dark:border-gray-700">
                     <li class="categories rounded">
-                        <a href="#"
+                        <a href="{{ route('categories.index') }}"
                             class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-green-200 dark:hover:bg-green-700 dark:text-white group">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -269,7 +269,7 @@
             preloader.style.display = 'none'
         })
     </script>
-    @vite(['resources/js/app.js'])
+    @vite('resources/js/app.js')
 </body>
 
 </html>

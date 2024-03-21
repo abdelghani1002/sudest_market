@@ -1,0 +1,22 @@
+.categories {
+    border-left-width: 2px;
+    --tw-bg-opacity: 1;
+    background-color: rgb(188 240 218 / var(--tw-bg-opacity));
+}
+
+.categories svg {
+    fill: black;
+}
+
+:is(.dark .categories svg) {
+    fill: white
+}
+
+:is(.dark .categories) {
+    background-color: rgb(1 71 55 / var(--tw-bg-opacity));
+}
+
+.category-image:hover {
+    transform: scale(3);
+    transition: transform 0.5s;
+}
