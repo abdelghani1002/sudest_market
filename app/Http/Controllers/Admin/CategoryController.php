@@ -1,20 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\RepositoriesInterfaces\CategoryRepositoryInterface;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+    protected $category;
+
+    public function __construct(CategoryRepositoryInterface $category)
+    {
+        $this->category = $category;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::latest()->paginate(4);
+        $categories = $this->category->latest()->paginate(4);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -41,7 +50,7 @@ class CategoryController extends Controller
             $validatedData['photo_src'] = 'storage/categories/' . $filename;
         }
 
-        $category = Category::create($validatedData);
+        $category = $this->category->create($validatedData);
         $category->save();
 
         return redirect()->route('categories.index')->with('success', 'Category created successfully.');
@@ -76,7 +85,7 @@ class CategoryController extends Controller
             $validatedData['photo_src'] = 'storage/categories/' . $filename;
         }
 
-        $category->update($validatedData);
+        $this->category->update($category->id, $validatedData);
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
     /**
@@ -90,7 +99,7 @@ class CategoryController extends Controller
             $photo = str_replace('storage/', 'public/', $photo);
             Storage::delete($photo);
         }
-        $category->delete();
+        $this->category->delete($category->id);
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }
