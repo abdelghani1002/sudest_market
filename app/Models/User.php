@@ -73,4 +73,8 @@ class User extends Authenticatable Implements JWTSubject, CanResetPassword
     public function city(){
         return $this->belongsTo(City::class, 'city_id');
     }
+
+    public function sellerRequest() {
+        return $this->hasOne(SellerRequest::class);
+    }
 }
