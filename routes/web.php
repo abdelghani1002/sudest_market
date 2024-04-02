@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SellerRequestController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,17 +17,18 @@ use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 |
 */
 
-Route::get('/api', function () {
-    return redirect("/api/documentation");
-});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
-
 Route::group(['middleware'=>"auth"], function(){
+    // Admin
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
     Route::resource('categories', CategoryController::class)->except(['show']);
+
+    // Customer
+    Route::get('/sellerRequests', [SellerRequestController::class, 'index'])->name('sellerRequests.index');
+    Route::post('/become-seller', [SellerRequestController::class, 'store'])->name('become-seller');
+    Route::put('/sellerRequests/{id}', [SellerRequestController::class, 'update'])->name('sellerRequests.update');
 });
 
 require __DIR__ . '/auth.php';
