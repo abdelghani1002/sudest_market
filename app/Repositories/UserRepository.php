@@ -30,9 +30,7 @@ class UserRepository implements UserRepositoryInterface
     {
         if (is_null($id)) {
             $user = new User;
-            $user->name = $data['name'];
-            $user->email = $data['email'];
-            $user->password = Hash::make('password');
+            $user->fill($data);
             $user->save();
 
             return $user;
