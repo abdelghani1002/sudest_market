@@ -14,7 +14,7 @@ li *{
 }
 
 /* For IE, Edge and Firefox */
-.scrollbar-hide {
+.scrollbar-hidden {
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
