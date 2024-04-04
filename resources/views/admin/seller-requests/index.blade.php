@@ -34,7 +34,8 @@
                     <tbody>
                         @foreach ($sellerRequests as $request)
                             <tr
-                                class="odd:bg-gray-200 even:bg-gray-300 dark:odd:bg-gray-800 dark:even:bg-gray-700 dark:text-gray-300">
+                                @class([ "odd:bg-gray-200 even:bg-gray-300 dark:odd:bg-gray-800 dark:even:bg-gray-700 dark:text-gray-300",
+                                         'border-2 border-yellow-300' => $request->status == 'pending'])>
 
                                 <td class="p-2 border-r border-gray-500">
                                     <div class="flex gap-1">

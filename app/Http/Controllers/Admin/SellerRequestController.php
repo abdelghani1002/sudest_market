@@ -36,6 +36,7 @@ class SellerRequestController extends Controller
         if ($request->status == 'accepted') {
             $sellerRole = Role::where('name', 'seller')->first();
             $sellerRequest->customer->roles()->sync($sellerRole->id);
+            $sellerRequest->customer->store()->create();
             $sellerRequest->customer->notify(new SellerRequestAcceptedNotification());
         } else
             $sellerRequest->customer->notify(new SellerRequestRejectedNotification('Reason')); // add request reason
