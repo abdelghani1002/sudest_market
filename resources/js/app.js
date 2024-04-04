@@ -10,6 +10,7 @@ window.addEventListener('load', () => {
 $(document).ready(function() {
     let successAlert = $('p[data-icon="success"]');
     let errorAlert = $('p[data-icon="error"]');
+    let infoAlert = $('p[data-icon="info"]');
 
     if (successAlert.length > 0) {
         Swal.fire({
@@ -19,13 +20,23 @@ $(document).ready(function() {
             title: successAlert.attr('data-title'),
             text: successAlert.text(),
             showConfirmButton: false,
-            timer: 3000,
+            timer: 4000,
         });
     } else if (errorAlert.length > 0) {
         Swal.fire({
             icon: 'error',
             title: errorAlert.attr('data-title'),
             text: errorAlert.text()
+        });
+    } else if (infoAlert.length > 0){
+        Swal.fire({
+            position: 'top-end',
+            toast: true,
+            icon: 'info',
+            title: infoAlert.attr('data-title'),
+            text: infoAlert.text(),
+            showConfirmButton: false,
+            timer: 4000,
         });
     }
 });
