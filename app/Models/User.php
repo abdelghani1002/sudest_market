@@ -77,4 +77,8 @@ class User extends Authenticatable Implements JWTSubject, CanResetPassword
     public function sellerRequest() {
         return $this->hasOne(SellerRequest::class);
     }
+
+    public function store() {
+        return $this->hasOne(Store::class);
+    }
 }

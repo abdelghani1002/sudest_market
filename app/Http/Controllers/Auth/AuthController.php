@@ -62,12 +62,13 @@ class AuthController extends Controller
         } else {
             if (Auth::attempt($request->only(["email", "password"]))) {
                 $user = Auth::user();
-                // check guest role to defind the redirect url
-                if ($user->hasRole('admin')){
+                // check user role to defind the redirect url
+                if ($user->hasRole('admin')) {
                     $redirect_url = 'dashboard';
-                } else {
+                } else if ($user->hasRole('seller')) {
+                    $redirect_url = 'MyStore';
+                } else
                     $redirect_url = '/';
-                }
 
                 return response()->json([
                     "status" => true,
@@ -110,9 +111,10 @@ class AuthController extends Controller
         $customerRole = Role::where('name', 'customer')->first();
         $user->roles()->attach($customerRole->id);
 
-        if ($user->hasRole('admin')){
+        // check user role to defind the redirect url
+        if ($user->hasRole('admin') || $user->hasRole('seller')) {
             $redirect_url = 'dashboard';
-        }else{
+        } else {
             $redirect_url = '/';
         }
 
@@ -129,9 +131,10 @@ class AuthController extends Controller
      */
     public function create(array $data)
     {
-        return $this->user_repository->storeOrUpdate(null,[
+        return $this->user_repository->storeOrUpdate(null, [
             'name' => $data['name'],
             'email' => $data['email'],
+            'photo_src' => 'default_user_photo.png',
             'password' => Hash::make($data['password'])
         ]);
     }

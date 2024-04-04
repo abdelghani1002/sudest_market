@@ -20,7 +20,7 @@ class SellerRequestAcceptedNotification extends Notification implements ShouldQu
      */
     public function __construct()
     {
-        $this->subject = "Reservation accepted";
+        $this->subject = "Seller Request accepted";
         $this->fromEmail = "sud-est@example.com";
         $this->mailer = "smtp";
     }
@@ -47,7 +47,7 @@ class SellerRequestAcceptedNotification extends Notification implements ShouldQu
         ->greeting("Hello " . $notifiable->name)
         ->line("🤩🤩 Your seller request has been accepted by admin 🤩🤩")
         ->line("Checkout for your store.")
-        ->action('Checkout Now', 'http://localhost:8000/dashboard')
+        ->action('Checkout Your store', 'http://127.0.0.1:8000/MyStore')
         ->line("Make money 😉.");
     }
 
