@@ -11,9 +11,25 @@ class Store extends Model
     protected $fillable = ['status'];
 
     /*
-    * return a belo,gs to relationship
+    * return a belongsTo relationship
     */
     public function seller(){
         return $this->belongsTo(User::class);
+    }
+
+    /*
+    * return a belongsToMany relationship
+    */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'stores_categories');
+    }
+
+    /*
+    * return a belongsToMany relationship
+    */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }

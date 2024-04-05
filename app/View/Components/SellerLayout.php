@@ -7,12 +7,13 @@ use Illuminate\View\Component;
 
 class SellerLayout extends Component
 {
+    public $store;
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        //
+        $this->store = auth()->user()->store;
     }
 
     /**

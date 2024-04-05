@@ -27,8 +27,14 @@ Route::group(['middleware'=>"auth"], function(){
     Route::resource('categories', CategoryController::class)->except(['show']);
 
     // Seller
-    Route::get('/MyStore', [SellerController::class, 'index'])->name('seller.mystore');
-
+    Route::get('/MyStore', [SellerController::class, 'statistics'])->name('seller.mystore');
+    Route::prefix('/MyStore')->resource('/MyStore/categories', SellerController::class)
+            ->only([
+                'index',
+                'show',
+            ])
+            ->names("seller.mystore.categories");
+    Route::put("/MyStore/categories", [SellerController::class, 'update'])->name("seller.mystore.categories.update");
     // Customer
     Route::get('/sellerRequests', [SellerRequestController::class, 'index'])->name('sellerRequests.index');
     Route::post('/become-seller', [SellerRequestController::class, 'store'])->name('become-seller');

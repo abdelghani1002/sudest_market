@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('seller_requests', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('user_id')->constrained('users')
+                    ->cascadeOnUpdate()
+                    ->cascadeOnDelete();
             $table->enum('status', ['accepted', 'rejected', 'pending'])->default('pending');
             $table->timestamps();
         });
