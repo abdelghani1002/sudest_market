@@ -3,19 +3,23 @@
 namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Store;
 use App\Repositories\CategoryRepository;
 use App\RepositoriesInterfaces\CategoryRepositoryInterface;
+use App\RepositoriesInterfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class SellerController extends Controller
 {
-    protected $category;
+    protected $categoryRepository;
+    protected $productRepository;
 
-    public function __construct(CategoryRepositoryInterface $category)
+    public function __construct(CategoryRepositoryInterface $categoryRepository, ProductRepositoryInterface $productRepository)
     {
         $this->middleware('role:seller');
-        $this->category = $category;
+        $this->categoryRepository = $categoryRepository;
+        $this->productRepository = $productRepository;
     }
 
     public function statistics()
@@ -26,7 +30,7 @@ class SellerController extends Controller
 
     public function index()
     {
-        $categories = $this->category->getAll();
+        $categories = $this->categoryRepository->getAll();
         $store = auth()->user()->store;
         return view("seller.store.categories.index", compact('categories', 'store'));
     }
@@ -39,11 +43,11 @@ class SellerController extends Controller
         return redirect()->back()->with('success', "Categories has been updated succeessfully.");
     }
 
-    public function show($category)
+    public function show(Category $category)
     {
         // get store products by category
         $store = auth()->user()->store;
-        $products = $store->products;
-        return view("seller.store.categories.show", compact('products'));
+        $products = $this->productRepository->whereBelongsToStore($store, $category);
+        return view("seller.store.categories.show", compact('products', 'category'));
     }
 }
