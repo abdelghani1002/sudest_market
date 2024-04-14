@@ -4,12 +4,14 @@ namespace App\Providers;
 
 use App\Models\Permission;
 use App\Repositories\CategoryRepository;
+use App\Repositories\ProductRepository;
 use App\RepositoriesInterfaces\UserRepositoryInterface;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use App\Repositories\UserRepository;
 use App\RepositoriesInterfaces\CategoryRepositoryInterface;
+use App\RepositoriesInterfaces\ProductRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
     }
 
     /**

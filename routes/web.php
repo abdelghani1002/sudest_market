@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SellerRequestController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Seller\SellerController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,10 +36,15 @@ Route::group(['middleware'=>"auth"], function(){
             ])
             ->names("seller.mystore.categories");
     Route::put("/MyStore/categories", [SellerController::class, 'update'])->name("seller.mystore.categories.update");
+    Route::resource('/MyStore/products', ProductController::class)->except(['create', 'show']);
+    Route::get('/MyStore/products/create/{category}', [ProductController::class, 'create'])->name('products.create');
+
     // Customer
     Route::get('/sellerRequests', [SellerRequestController::class, 'index'])->name('sellerRequests.index');
     Route::post('/become-seller', [SellerRequestController::class, 'store'])->name('become-seller');
     Route::put('/sellerRequests/{id}', [SellerRequestController::class, 'update'])->name('sellerRequests.update');
 });
+
+Route::get('MyStore/products/{product}', [ProductController::class, 'show'])->name('products.show');
 
 require __DIR__ . '/auth.php';
