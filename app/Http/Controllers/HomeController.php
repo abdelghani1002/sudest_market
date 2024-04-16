@@ -2,12 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CategoryRepository;
+use App\RepositoriesInterfaces\CategoryRepositoryInterface;
+use App\RepositoriesInterfaces\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    protected $categoryrepository;
+    protected $productrepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryrepository, ProductRepositoryInterface $productrepository)
+    {
+        $this->categoryrepository = $categoryrepository;
+        $this->productrepository = $productrepository;
+    }
+
     public function index()
     {
-        return view('home');
+        $categories = $this->categoryrepository->getAll();
+        $products = $this->productrepository->latest();
+        return view('home', compact('categories', 'products'));
     }
 }

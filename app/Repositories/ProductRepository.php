@@ -9,7 +9,7 @@ class ProductRepository implements ProductRepositoryInterface
 {
     public function latest()
     {
-        return Product::latest();
+        return Product::latest()->paginate(6);
     }
 
     public function getAll()
