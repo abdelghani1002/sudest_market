@@ -22,6 +22,11 @@ class HomeController extends Controller
     {
         $categories = $this->categoryrepository->getAll();
         $products = $this->productrepository->latest();
-        return view('home', compact('categories', 'products'));
+        if (session()->has('cart')) {
+            $cart = session()->get('cart');
+        } else {
+            $cart = [];
+        }
+        return view('home', compact('categories', 'products', 'cart'));
     }
 }

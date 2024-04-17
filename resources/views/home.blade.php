@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :cart="$cart">
     <x-hero-section />
     <div class="flex gap-2 items-center justify-center">
         <span class="w-5 flex justify-center">
@@ -33,7 +33,7 @@
             @endunless
         </div>
         <div class="p-5">
-            {{ $products->OnEachSide(1)->links() }}
+            {{ $products->links('pagination::simple-tailwind') }}
         </div>
     </div>
     @vite(['resources/js/search.js'])

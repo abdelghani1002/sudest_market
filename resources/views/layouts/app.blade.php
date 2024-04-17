@@ -32,6 +32,7 @@
 
     @include('components.header')
 
+    @include('components.cart', ['cart' => $cart])
 
     <!-- Page Content -->
     <main class="w-full h-full">

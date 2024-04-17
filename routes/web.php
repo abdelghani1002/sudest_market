@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SellerRequestController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
@@ -22,6 +23,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post("/products/addToCart/{product}", [CartController::class, "addProducttoCart"])->name("add_to_cart");
+Route::post("/products/removeFromCart", [CartController::class, "removeFromCart"])->name("remove_from_cart");
+Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/search', SearchController::class)->name('search');
 
 Route::group(['middleware'=>"auth"], function(){
     // Admin
@@ -44,9 +49,7 @@ Route::group(['middleware'=>"auth"], function(){
     Route::get('/sellerRequests', [SellerRequestController::class, 'index'])->name('sellerRequests.index');
     Route::post('/become-seller', [SellerRequestController::class, 'store'])->name('become-seller');
     Route::put('/sellerRequests/{id}', [SellerRequestController::class, 'update'])->name('sellerRequests.update');
+    Route::post("/checkout", [OrderController::class, 'checkout'])->name("checkout");
 });
-
-Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/search', SearchController::class)->name('search');
 
 require __DIR__ . '/auth.php';
