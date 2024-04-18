@@ -14,7 +14,7 @@ $(document).ready(function() {
 
     if (successAlert.length > 0) {
         Swal.fire({
-            position: 'top-end',
+            position: 'bottom-end',
             toast: true,
             icon: 'success',
             title: successAlert.attr('data-title'),
@@ -30,7 +30,7 @@ $(document).ready(function() {
         });
     } else if (infoAlert.length > 0){
         Swal.fire({
-            position: 'top-end',
+            position: 'bottom-end',
             toast: true,
             icon: 'info',
             title: infoAlert.attr('data-title'),
