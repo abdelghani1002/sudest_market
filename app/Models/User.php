@@ -81,4 +81,10 @@ class User extends Authenticatable Implements JWTSubject, CanResetPassword
     public function store() {
         return $this->hasOne(Store::class);
     }
+
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

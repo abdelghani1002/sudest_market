@@ -5,10 +5,13 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SellerRequestController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PayementController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Seller\SellerController;
 use Illuminate\Support\Facades\Route;
+use Mockery\Generator\StringManipulation\Pass\Pass;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +53,8 @@ Route::group(['middleware'=>"auth"], function(){
     Route::post('/become-seller', [SellerRequestController::class, 'store'])->name('become-seller');
     Route::put('/sellerRequests/{id}', [SellerRequestController::class, 'update'])->name('sellerRequests.update');
     Route::post("/checkout", [OrderController::class, 'checkout'])->name("checkout");
+    Route::get("/success", [PayementController::class, 'success'])->name("success");
+    Route::get("/cancel", [PayementController::class, 'cancel'])->name("cancel");
 });
 
 require __DIR__ . '/auth.php';

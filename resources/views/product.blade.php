@@ -121,6 +121,10 @@
                             </a>
                         </div>
                     </div>
+                    
+                    <div class="flex dark:text-gray-300">
+                        <small>{{ $product->quantity }} units available</small>
+                    </div>
 
                     @if (Auth::check() && auth()->user()->hasRole('seller') && Auth::user()->store->products->contains($product))
                         <div class="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">

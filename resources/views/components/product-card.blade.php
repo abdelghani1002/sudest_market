@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="p-4">
-        <div class="flex items-end mt-4 justify-between">
+        <div class="flex items-end justify-between">
             <span class="flex items-center gap-1">
                 <span class="font-bold p-0 text-lg dark:text-gray-200">{{ $product->price }} MAD</span>
             </span>
@@ -35,6 +35,9 @@
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
             </span>
+        </div>
+        <div class="flex dark:text-gray-300">
+            <small>{{ $product->quantity }} units available</small>
         </div>
     </div>
     <div class="p-2 md:p-4 flex gap-2 w-full">
