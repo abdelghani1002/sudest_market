@@ -31,6 +31,7 @@
     <x-preloader />
 
     @include('components.header')
+    <div class="w-full h-14"></div>
 
     @include('components.cart', ['cart' => $cart])
 

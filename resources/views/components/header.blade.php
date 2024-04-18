@@ -1,4 +1,4 @@
-<header class="p-0">
+<header class="fixed w-full z-50 drop-shadow-lg">
     <nav class="bg-white border-gray-200 px-2 md:px-4 lg:px-6 py-2.5 dark:bg-gray-800">
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <x-app-logo />
@@ -27,9 +27,18 @@
                         <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                             <li>
                                 <a href="{{ route('profile') }}"
-                                    class="block py-2 px-4 text-sm hover:bg-green-200 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">My
-                                    profile</a>
+                                    class="block py-2 px-4 text-sm hover:bg-green-200 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
+                                    Profile
+                                </a>
                             </li>
+                            @role("seller")
+                            <li>
+                                <a href="{{ route('seller.mystore') }}"
+                                    class="block py-2 px-4 text-sm hover:bg-green-200 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
+                                    My store
+                                </a>
+                            </li>
+                            @endrole
                         </ul>
                         @role('customer')
                             <ul class="p-2" aria-labelledby="dropdown">
@@ -106,26 +115,25 @@
                         </li>
                     @endguest
                     <li>
-                        <a href="#"
+                        <a href="{{ route('home') }}"
                             class="block py-2 pr-4 pl-3 text-white rounded bg-green-500 lg:bg-transparent lg:text-green-600 lg:p-0 dark:text-white"
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Company</a>
+                        <a href="{{ route("profile") }}"
+                            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Profile</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Marketplace</a>
+                            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Craftsmen
+                        </a>
                     </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Features</a>
-                    </li>
+
                     <li>
                         <a href="#"
                             class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Team</a>
                     </li>
+
                     <li>
                         <a href="#"
                             class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
