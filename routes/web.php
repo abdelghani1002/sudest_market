@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayementController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Seller\SellerController;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,8 @@ Route::group(['middleware'=>"auth"], function(){
     Route::post("/checkout", [OrderController::class, 'checkout'])->name("checkout");
     Route::get("/success", [PayementController::class, 'success'])->name("success");
     Route::get("/cancel", [PayementController::class, 'cancel'])->name("cancel");
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
 
 require __DIR__ . '/auth.php';

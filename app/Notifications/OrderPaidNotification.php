@@ -14,12 +14,14 @@ class OrderPaidNotification extends Notification implements ShouldQueue
     public $subject;
     public $fromEmail;
     public $mailer;
+    public $order;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($order)
     {
+        $this->order = $order;
         $this->subject = "Order paid successfully";
         $this->fromEmail = "sud-est@example.com";
         $this->mailer = "smtp";
@@ -46,8 +48,13 @@ class OrderPaidNotification extends Notification implements ShouldQueue
             ->greeting("Hello " . $notifiable->name)
             ->line("🤩🤩 Your order has been paid successfully 🤩🤩")
             ->line("Checkout for your order.")
-            ->action('Checkout Your order', 'http://127.0.0.1:8000/orders/' . $notifiable->id)
+            ->line("Order Details:")
+            ->line("Order ID: " . $this->order->id)
+            ->line("Order amount: " . $this->order->total_amount . " MAD")
+            ->line("Order Status: " . $this->order->status)
+            ->action('Checkout', 'http://127.0.0.1:8000/profile#orders')
             ->line("Thank you for your purchase 😉.");
+
     }
 
     /**
