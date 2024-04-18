@@ -34,6 +34,21 @@
 
     @include('components.cart', ['cart' => $cart])
 
+    <!-- alert -->
+    @if (session('success'))
+        <p data-icon="success" data-title="Success." class="hidden alert text-green-400 text-center">
+            {{ session('success') }}
+        </p>
+    @elseif (session('error'))
+        <p data-icon="error" data-title="Error!" class="hidden alert text-red-400 text-center">
+            {{ session('error') }}
+        </p>
+    @elseif (session('info'))
+        <p data-icon="info" data-title="Info!" class="hidden alert text-blue-400 text-center">
+            {{ session('info') }}
+        </p>
+    @endif
+
     <!-- Page Content -->
     <main class="w-full h-full">
         {{ $slot }}

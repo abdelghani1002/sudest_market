@@ -1,22 +1,4 @@
-<style>
-    .statistics {
-        border-left-width: 2px;
-        --tw-bg-opacity: 1;
-        background-color: rgb(188 240 218 / var(--tw-bg-opacity));
-    }
-
-    .statistics svg {
-        fill: black;
-    }
-
-    :is(.dark .statistics svg) {
-        fill: white
-    }
-
-    :is(.dark .statistics) {
-        background-color: rgb(1 71 55 / var(--tw-bg-opacity));
-    }
-</style>
+@vite('resources/css/statistics.css')
 <x-admin-layout>
     <div class="p-4 md:ml-64 h-auto pt-20">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
@@ -196,8 +178,7 @@
                             </td>
                             <td class="px-2 md:px-6 py-4">
                                 <!-- Modal toggle -->
-                                <span href="#" type="button" data-modal-target="editUserModal"
-                                    data-modal-show="editUserModal"
+                                <span href="#" type="button"
                                     class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
                                     ago</span>
                             </td>
@@ -228,8 +209,7 @@
                             </td>
                             <td class="px-2 md:px-6 py-4">
                                 <!-- Modal toggle -->
-                                <span href="#" type="button" data-modal-target="editUserModal"
-                                    data-modal-show="editUserModal"
+                                <span href="#" type="button"
                                     class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
                                     ago</span>
                             </td>
@@ -260,8 +240,7 @@
                             </td>
                             <td class="px-2 md:px-6 py-4">
                                 <!-- Modal toggle -->
-                                <span href="#" type="button" data-modal-target="editUserModal"
-                                    data-modal-show="editUserModal"
+                                <span href="#" type="button"
                                     class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
                                     ago</span>
                             </td>
@@ -292,8 +271,7 @@
                             </td>
                             <td class="px-2 md:px-6 py-4">
                                 <!-- Modal toggle -->
-                                <span href="#" type="button" data-modal-target="editUserModal"
-                                    data-modal-show="editUserModal"
+                                <span href="#" type="button"
                                     class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
                                     ago</span>
                             </td>
@@ -324,8 +302,7 @@
                             </td>
                             <td class="px-2 md:px-6 py-4">
                                 <!-- Modal toggle -->
-                                <span href="#" type="button" data-modal-target="editUserModal"
-                                    data-modal-show="editUserModal"
+                                <span href="#" type="button"
                                     class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
                                     ago</span>
                             </td>
