@@ -45,4 +45,11 @@ class Product extends Model
     {
         return $this->hasMany(Photo::class);
     }
+
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class)
+            ->using(OrderProduct::class)
+            ->withPivot('units');
+    }
 }

@@ -37,7 +37,8 @@
             </span>
         </div>
         <div class="flex dark:text-gray-300">
-            <small>{{ $product->quantity }} units available</small>
+            <small class="mr-1 product_quantity">{{ $product->quantity }}</small>
+            <small>units available</small>
         </div>
     </div>
     <div class="p-2 md:p-4 flex gap-2 w-full">
@@ -52,20 +53,31 @@
                 Add to favorites
             </button>
         </form>
-        <form method="POST" action="{{ route('add_to_cart', $product) }}"
-            class="flex-grow text-white sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center"
-            >
-            @csrf
-            @method('POST')
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <button class="py-2.5 px-2 md:px-5 inline-flex">
+        @if ($product->quantity > 0)
+            <form method="POST" action="{{ route('add_to_cart', $product) }}"
+                class="flex-grow text-white sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center">
+                @csrf
+                @method('POST')
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <button class="py-2.5 px-2 md:px-5 inline-flex">
+                    <svg class="w-5 h-5 -ms-2 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
+                    </svg>
+                    Add to carkt
+                </button>
+            </form>
+        @else
+            <button
+                class="text-gray-500 sm:mt-0 bg-gray-300 cursor-not-allowed focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm dark:bg-gray-600 dark:focus:ring-gray-700 flex items-center justify-center py-2.5 px-2 md:px-5">
                 <svg class="w-5 h-5 -ms-2 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                     height="24" fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
                 </svg>
-                Add to carkt
+                Out of stock
             </button>
-        </form>
+        @endif
     </div>
 </a>

@@ -63,6 +63,11 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $total_sales = 0;
+        foreach($product->orders as $order){
+            $total_sales += $order->pivot->units;
+        }
+        $product->total_sales = $total_sales;
         return view('product', compact('product'));
     }
 
