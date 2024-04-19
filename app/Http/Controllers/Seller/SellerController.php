@@ -48,6 +48,13 @@ class SellerController extends Controller
         // get store products by category
         $store = auth()->user()->store;
         $products = $this->productRepository->whereBelongsToStore($store, $category);
+        foreach ($products as $product) {
+            $total_sales = 0;
+            foreach ($product->orders as $order) {
+                $total_sales += $order->pivot->units;
+            }
+            $product->total_sales = $total_sales;
+        }
         return view("seller.store.categories.show", compact('products', 'category'));
     }
 }

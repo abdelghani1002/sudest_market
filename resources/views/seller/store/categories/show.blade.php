@@ -60,20 +60,20 @@
                                 </td>
 
                                 <td class="p-2 border-r border-white">
-                                    <p class="text-center">
-                                        {{ $product->price }}
+                                    <p class="text-center font-bold">
+                                        {{ $product->price }} MAD
                                     </p>
                                 </td>
 
                                 <td class="p-2 border-r border-white">
                                     <p class="text-center">
-                                        {{ $product->quantity }} <!-- - $product->sold -->
+                                        {{ $product->quantity }}
                                     </p>
                                 </td>
 
                                 <td class="p-2 border-r border-white">
                                     <p class="text-center">
-                                        {{ $product->sales }}
+                                        {{ $product->total_sales }}
                                     </p>
                                 </td>
 
