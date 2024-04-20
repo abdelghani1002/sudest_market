@@ -1,7 +1,7 @@
 <a href="{{ route('products.show', $product) }}"
     class="hover:scale-[101%] bg-white dark:bg-slate-800 m-2 rounded-lg overflow-hidden shadow-lg ring-2 hover:ring-4 ring-green-500 ring-opacity-70 max-w-sm w-full md:w-[30%] flex flex-col justify-between">
     <div class="relative w-full  dark:text-gray-300">
-        <img class="w-full object-cover max-h-56"
+        <img class="w-full object-cover h-56"
             @if (file_exists($product->primary_photo_src)) src="{{ asset($product->primary_photo_src) }}"
             @else
             src="{{ asset('storage/photos/product_default.png') }}" @endif
@@ -15,7 +15,7 @@
                     {{ Str::limit($product->description, 80, '...') }}
                 @endif
             </p>
-            <span class="font-medium mb-2 bg-gray-200 dark:bg-gray-600 p-1 rounded-md">
+            <span class="font-medium bg-gray-200 dark:bg-gray-600 p-1 rounded-md">
                 @if ($product->category)
                     {{ $product->category->name }}
                 @else
@@ -24,7 +24,7 @@
             </span>
         </div>
     </div>
-    <div class="p-4">
+    <div class="px-2">
         <div class="flex items-end justify-between">
             <span class="flex items-center gap-1">
                 <span class="font-bold p-0 text-lg dark:text-gray-200">{{ $product->price }} MAD</span>
