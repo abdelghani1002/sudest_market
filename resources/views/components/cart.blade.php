@@ -1,5 +1,5 @@
 <div id="cart" data-dropdown="cart" data-dropdown-hidden="cartbtn"
-    class="hidden absolute w-2/3 md:w-1/3 lg:w-1/4 right-1 top-16 max-w-xl mx-auto border border-green-400 rounded-md bg-gray-300 dark:bg-slate-700 dark:text-gray-300">
+    class="hidden z-50 absolute w-2/3 md:w-1/3 lg:w-1/4 right-1 top-16 max-w-xl mx-auto border border-green-400 rounded-md bg-gray-300 dark:bg-slate-700 dark:text-gray-300">
     <div class="shadow-lg rounded-lg overflow-hidden">
         <div class="flex items-center justify-between p-2 border-b border-green-300">
             <h1 class="text-lg font-bold mr-3">Shopping Cart</h1>
