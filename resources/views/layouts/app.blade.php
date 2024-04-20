@@ -55,6 +55,8 @@
         {{ $slot }}
     </main>
 
+    <x-footer />
+
     @vite(['resources/js/app.js'])
 </body>
 
