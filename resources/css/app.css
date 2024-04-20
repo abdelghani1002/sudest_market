@@ -14,7 +14,7 @@ li *{
 }
 
 /* For IE, Edge and Firefox */
-.scrollbar-hidden {
+.scrollbar-hide{
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
@@ -63,4 +63,16 @@ li *{
 
 .preloader .icon img {
     animation: rotate360 2s infinite linear;
+}
+
+.category-card:hover {
+    text-decoration: underline;
+}
+
+.category-card > a {
+    background-image: linear-gradient(to bottom, rgba(52, 52, 52, 0.946), rgba(243, 243, 243, 0), rgba(172, 172, 172, 0));
+}
+
+.categories-header{
+   
 }

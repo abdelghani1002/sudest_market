@@ -16,7 +16,7 @@ class CategoryController extends Controller
 
     public function __construct(CategoryRepositoryInterface $category)
     {
-        $this->middleware("role:admin");
+        $this->middleware("role:admin")->except('show');
         $this->category = $category;
     }
 
@@ -27,6 +27,15 @@ class CategoryController extends Controller
     {
         $categories = $this->category->latest()->paginate(4);
         return view('admin.categories.index', compact('categories'));
+    }
+
+    /**
+     * Display the specified category page.
+     */
+    public function show(Category $category)
+    {
+        $categories = $this->category->getAll();
+        return view('category', compact('category', 'categories'));
     }
 
     /**

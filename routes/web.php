@@ -31,6 +31,7 @@ Route::post("/products/addToCart/{product}", [CartController::class, "addProduct
 Route::post("/products/removeFromCart", [CartController::class, "removeFromCart"])->name("remove_from_cart");
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/search', SearchController::class)->name('search');
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::group(['middleware'=>"auth"], function(){
     // Admin
