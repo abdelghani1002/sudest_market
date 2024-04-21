@@ -52,4 +52,9 @@ class Product extends Model
             ->using(OrderProduct::class)
             ->withPivot('units');
     }
+
+    public function favoritedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorates');
+    }
 }
