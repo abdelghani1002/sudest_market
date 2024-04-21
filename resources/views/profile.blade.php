@@ -38,22 +38,112 @@
         </ul>
     </div>
 
-    {{-- @unless ($favProduct->count() == 0)
-        <div class="px-10">
+    @unless ($user->favorites->count() == 0)
+        <div class="px-4 md:px-10">
             <div class="">
-                <h3 class="text-3xl font-bold dark:text-gray-300">Favorite Products</h3>
+                <h3 class="text-3xl font-bold dark:text-gray-300">WishList</h3>
             </div>
             <div id="place_result"
                 class="flex flex-wrap lg:px-32 px-8 gap-2 lg:justify-start md:justify-center pb-10 pt-2 justify-center w-full">
-                @foreach ($favProduct as $product)
-                    <x-card :product="$product" />
-                @endforeach
+                <div class="">
+                    <div class="w-full py-2 align-middle md:px-6 lg:px-8">
+                        <div class="border border-gray-200 dark:border-gray-700 md:rounded-lg overflow-x-scroll">
+                            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                <thead class="bg-gray-50 dark:bg-slate-800">
+                                    <tr>
+                                        <th scope="col"
+                                            class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            <div class="flex items-center gap-x-3">
+                                                <button class="flex items-center gap-x-2">
+                                                    <span>N°</span>
+                                                </button>
+                                            </div>
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Name
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Price
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Category
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Artisan
+                                        </th>
+
+                                        <th scope="col"
+                                            class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 dark:text-gray-400">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+                                    @foreach ($user->favorites as $product)
+                                        <tr
+                                            class="odd:bg-gray-200 even:bg-gray-300 dark:even:bg-gray-700 dark:odd:bg-gray-600">
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
+                                                <div class="inline-flex items-center gap-x-3">
+                                                    <span>#{{ $product->id }}</span>
+                                                </div>
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                {{ $product->name }}MAD
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                {{ $product->price }}MAD
+                                            </td>
+                                            <td
+                                                class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-zinc-300 whitespace-nowrap">
+                                                <span class="text-sm font-normal">
+                                                    {{ $product->category->name }}
+                                                </span>
+                                            </td>
+                                            <td
+                                                class="min-w-60 px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                                <div class="w-full relative flex flex-col justify-center gap-x-2">
+                                                    {{ $product->store->seller->name }}
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <div class="flex items-center justify-center gap-3">
+                                                    <div>
+                                                        <a href="{{ route('products.show', $product) }}"
+                                                            class="flex items-center text-blue-600">
+                                                            <svg class="w-5 m-auto text-gray-700 hover:scale-125"
+                                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                                                <path class="fill-cyan-400"
+                                                                    d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" />
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    @endunless --}}
+        @vite('resources/js/favorites.js')
+    @endunless
 
     @unless ($user->orders->count() == 0)
-        <section id="orders" class="container p-4 mx-auto">
+        <section id="orders" class="container px-4 md:px-10 mx-auto">
             <div class="flex flex-col">
                 <h3 class="text-3xl font-bold dark:text-gray-300 mb-4">My orders</h3>
                 <div class="">
@@ -99,7 +189,8 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
                                     @foreach ($user->orders as $order)
-                                        <tr class="odd:bg-gray-200 even:bg-gray-300 dark:even:bg-gray-700 dark:odd:bg-gray-600">
+                                        <tr
+                                            class="odd:bg-gray-200 even:bg-gray-300 dark:even:bg-gray-700 dark:odd:bg-gray-600">
                                             <td
                                                 class="px-4 py-4 text-sm font-medium text-gray-700 dark:text-gray-200 whitespace-nowrap">
                                                 <div class="inline-flex items-center gap-x-3">
@@ -162,7 +253,8 @@
                                                                     src="{{ asset($product->primary_photo_src) }}"
                                                                     alt="Product photo">
                                                                 <div class="flex-1">
-                                                                    <h2 class="text-md font-bold">{{ $product->name }}</h2>
+                                                                    <h2 class="text-md font-bold">{{ $product->name }}
+                                                                    </h2>
                                                                     <div class="flex justify-between">
                                                                         <span class="text-sm dark:text-gray-300 font-bold">
                                                                             {{ $product->price }}$

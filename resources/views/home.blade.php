@@ -43,4 +43,5 @@
     </div>
     @vite(['resources/js/search.js'])
     @vite(['resources/js/categories.js'])
+    @vite(['resources/js/favorites.js'])
 </x-app-layout>

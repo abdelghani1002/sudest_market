@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SellerRequestController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PayementController;
@@ -57,6 +58,8 @@ Route::group(['middleware'=>"auth"], function(){
     Route::post("/checkout", [OrderController::class, 'checkout'])->name("checkout");
     Route::get("/success", [PayementController::class, 'success'])->name("success");
     Route::get("/cancel", [PayementController::class, 'cancel'])->name("cancel");
+    Route::post("/addToFavorites/{product}", [FavoriteController::class, "addToFavorites"])->name("add_to_favorites");
+    Route::delete("/removeFromFavorites/{product}", [FavoriteController::class, "removeFromFavorites"])->name("remove_from_favorites");
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
