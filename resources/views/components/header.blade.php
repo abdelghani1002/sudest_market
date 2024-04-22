@@ -31,13 +31,22 @@
                                     Profile
                                 </a>
                             </li>
-                            @role("seller")
+                            @role('seller')
+                                @role('admin')
+                                    <li>
+                                        <a href="{{ route('dashboard') }}"
+                                            class="block py-2 px-4 text-sm hover:bg-green-200 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
+                                            Dashboard
+                                        </a>
+                                    </li>
+                                @else
                             <li>
                                 <a href="{{ route('seller.mystore') }}"
                                     class="block py-2 px-4 text-sm hover:bg-green-200 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white">
-                                    My store
+                                            My Store
                                 </a>
                             </li>
+                            @endrole
                             @endrole
                         </ul>
                         @role('customer')
@@ -119,7 +128,7 @@
                             class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Home</a>
                     </li>
                     <li>
-                        <a href="{{ route("profile") }}"
+                        <a href="{{ route('profile') }}"
                             class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-green-500 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Profile</a>
                     </li>
                     <li>
