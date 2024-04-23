@@ -72,3 +72,15 @@ li *{
 .category-card > a {
     background-image: linear-gradient(to bottom, rgba(52, 52, 52, 0.946), rgba(243, 243, 243, 0), rgba(172, 172, 172, 0));
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

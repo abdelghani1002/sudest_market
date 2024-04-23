@@ -3,8 +3,8 @@
     <div class="relative w-full  dark:text-gray-300">
         <img class="w-full object-cover h-56"
             @if (file_exists($product->primary_photo_src)) src="{{ asset($product->primary_photo_src) }}"
-            @else
-            src="{{ asset('storage/photos/product_default.png') }}" @endif
+            @else src="{{ asset('storage/photos/product_default.png') }}"
+            @endif
             alt="Product Image">
         <div class="p-2">
             <h3 class="text-lg dark:text-gray-200 font-medium mb-2">{{ $product->name }}</h3>
@@ -108,8 +108,8 @@
         @endauth
 
         @if ($product->quantity > 0)
-            <form method="POST" action="{{ route('add_to_cart', $product) }}"
-                class="flex-grow text-white sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center p-0 justify-center">
+            <form id="addToCart" method="POST" action="{{ route('add_to_cart', $product) }}"
+                class="add-to-cart flex-grow text-white sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center p-0 justify-center">
                 @csrf
                 @method('POST')
                 <input type="hidden" name="product_id" value="{{ $product->id }}">

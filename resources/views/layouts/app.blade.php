@@ -12,7 +12,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
         integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-
     <script>
         // Dark & Light theme
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
@@ -33,7 +32,10 @@
     @include('components.header')
     <div class="w-full h-14"></div>
 
-    @include('components.cart', ['cart' => $cart])
+    <!-- Cart -->
+    <div id="cart" data-dropdown="cart" data-dropdown-hidden="cartbtn" class="hidden z-50 absolute w-2/3 md:w-1/3 lg:w-1/4 right-1 top-16 max-w-xl mx-auto">
+        {{-- <x-cart :cart="$cart"/> --}}
+    </div>
 
     <!-- alert -->
     @if (session('success'))
@@ -57,7 +59,7 @@
 
     <x-footer />
 
-    @vite(['resources/js/app.js'])
+    @vite(['resources/js/app.js', 'resources/js/cart.js'])
 </body>
 
 </html>

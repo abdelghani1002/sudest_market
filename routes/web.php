@@ -28,8 +28,9 @@ use Mockery\Generator\StringManipulation\Pass\Pass;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get("/cart", [CartController::class, "getCart"])->name("getCart");
 Route::post("/products/addToCart/{product}", [CartController::class, "addProducttoCart"])->name("add_to_cart");
-Route::post("/products/removeFromCart", [CartController::class, "removeFromCart"])->name("remove_from_cart");
+Route::delete("/products/removeFromCart/{id}", [CartController::class, "removeFromCart"])->name("remove_from_cart");
 Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/search', SearchController::class)->name('search');
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');

@@ -122,9 +122,19 @@
                         </div>
                     </div>
 
-                    <div class="flex dark:text-gray-300">
+                    <div class="flex dark:text-gray-300 py-2">
                         <small class="mr-1 product_quantity">{{ $product->quantity }}</small>
                         <small> units available</small>
+                    </div>
+
+                    <div class="flex mb-3">
+                        <a href="{{ route("categories.show", $product->category) }}" class="font-medium bg-gray-200 text-gray-400 dark:bg-gray-600 p-1 rounded-md">
+                            @if ($product->category)
+                                {{ $product->category->name }}
+                            @else
+                                ---
+                            @endif
+                        </a>
                     </div>
 
                     <div class="md:py-4 flex gap-2 w-full">
@@ -199,12 +209,19 @@
                         @endauth
 
                         @if ($product->quantity > 0)
-                            <form method="POST" action="{{ route('add_to_cart', $product) }}"
-                                class="max-w-60 flex-grow text-white sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center p-0 justify-center">
+                            {{-- Quantity --}}
+                            <div class="flex quantity_div">
+                                <button id="decrement" class="p-2 m-0 font-extrabold rounded-s-full border w-10 hover:bg-gray-200 dark:hover:bg-gray-600 text-center dark:text-gray-300">-</button id="incerement"n>
+                                <input class="max-w-10 text-center p-0 m-0" type="number" id="quantity" max="{{ $product->quantity }}" name="quantity" value="1">
+                                <button id="increment" class="p-2 m-0 font-extrabold rounded-e-full border w-10 hover:bg-gray-200 dark:hover:bg-gray-600 text-center dark:text-gray-300">+</button>
+                            </div>
+                            <form id="addToCart" method="POST" action="{{ route('add_to_cart', $product) }}"
+                                class="add-to-cart cursor-pointer max-w-60 flex-grow text-white sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center p-0 justify-center">
                                 @csrf
                                 @method('POST')
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <button class="text-nowrap py-2.5 px-3 md:px-5 inline-flex">
+                                <input type="hidden" name="units" id="units" value="1">
+                                <button type="button" class="text-nowrap py-2.5 px-3 md:px-5 inline-flex">
                                     <svg class="w-5 h-5 -ms-2 me-2" aria-hidden="true"
                                         xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         fill="none" viewBox="0 0 24 24">
