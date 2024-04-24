@@ -12,14 +12,18 @@ class PayementController extends Controller
 {
     static function pay($order, $back_url)
     {
-        $payment = Mollie::api()->payments->create([
-            "amount" => [
-                "currency" => "USD", // MAD dosn't exist in mollie
-                "value" => number_format($order->total_amount , 2, '.', '') // You must send the correct number of decimals, thus we enforce the use of number_format
-            ],
-            "description" => "Order #{$order->id}",
-            "redirectUrl" => route('success'),
-        ]);
+        try {
+            $payment = Mollie::api()->payments->create([
+                "amount" => [
+                    "currency" => "USD", // MAD dosn't exist in mollie
+                    "value" => number_format($order->total_amount, 2, '.', '') // You must send the correct number of decimals, thus we enforce the use of number_format
+                ],
+                "description" => "Order #{$order->id}",
+                "redirectUrl" => route('success'),
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->route('home')->with("error", $e->getMessage());
+        }
 
         session()->put('paymentId', $payment->id);
 
@@ -31,7 +35,7 @@ class PayementController extends Controller
         return redirect($payment->getCheckoutUrl(), 303);
     }
 
-    public function success(Request $request)
+    public function success()
     {
         $paymentId = session()->get('paymentId');
         session()->forget('paymentId');
@@ -64,12 +68,7 @@ class PayementController extends Controller
             session()->forget('cart');
             return redirect($back_url)->with("success", "Your payement is done with success");
         } else {
-            return redirect()->route('cancel');
+            return redirect()->route('home')->with("error", "Your payement is not completed");
         }
-    }
-
-    public function cancel()
-    {
-        echo "Payment is cancelled. !!!!!";
     }
 }
