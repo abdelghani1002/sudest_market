@@ -63,11 +63,12 @@ if (removeFromFavorites) {
 
 // Quantity
 increment.addEventListener('click', function () {
+    let product_qyt = document.querySelector("#product_quantity").innerHTML;
     let qty = parseInt(quantity.value);
-    if (qty < 10) {
+    if (qty < product_qyt && qty < 10) {
         quantity.value = qty + 1;
     } else {
-        quantity.value = 10;
+        quantity.value = product_qyt;
     }
     units.value = quantity.value;
 });

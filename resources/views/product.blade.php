@@ -123,7 +123,7 @@
                     </div>
 
                     <div class="flex dark:text-gray-300 py-2">
-                        <small class="mr-1 product_quantity">{{ $product->quantity }}</small>
+                        <small class="mr-1 product_quantity" id="product_quantity" value="{{ $product->quantity }}">{{ $product->quantity }}</small>
                         <small> units available</small>
                     </div>
 

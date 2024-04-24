@@ -13,10 +13,17 @@ class OrderController extends Controller
     {
         if ($request->has('order_id')) {
             $order = Order::find($request->order_id);
+            if (!OrderController::is_order_available($order)) {
+                return redirect()->back()->with('error', 'Order is not available');
+            }
             $back_url = $request->header('referer');
             return PayementController::pay($order, $back_url);
         }
-        
+
+        if (!OrderController::is_order_available($order)) {
+            return redirect()->back()->with('error', 'Order is not available');
+        }
+
         $cart = session()->get('cart');
         $user = auth()->user();
         $order = $user->orders()->create([
@@ -29,5 +36,18 @@ class OrderController extends Controller
 
         $back_url = $request->header('referer');
         return PayementController::pay($order, $back_url);
+    }
+
+    static function is_order_available($order) : bool
+    {
+        if ($order->status != 'pending'){
+            return false;
+        }
+        foreach ($order->products as $product) {
+            if ($product->quantity < $product->pivot->units) {
+                return false;
+            }
+        }
+        return true;
     }
 }
