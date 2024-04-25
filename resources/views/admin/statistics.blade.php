@@ -1,9 +1,9 @@
 @vite('resources/css/statistics.css')
 <x-admin-layout>
     <div class="p-4 md:ml-64 h-auto pt-20">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-4">
             <!-- Users Count -->
-            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg h-32 md:h-64">
+            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg py-5">
                 <span class="flex md:flex-col gap-3 justify-center items-center">
                     <span class="flex justify-center">
                         <svg class="w-20 h-20 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -14,16 +14,17 @@
                         </svg>
                     </span>
                     <div class="text-green-700 dark:text-gray-300 md:text-center">
-                        <span class="font-bold text-3xl">4690</span>
+                        <span class="font-bold text-3xl">{{ $users['total'] }}</span>
                         <span class="">users</span>
-                        <div class="text-xs text-gray-500"><i class="text-green-500 font-semibold">+120</i> this month
+                        <div class="text-xs text-gray-500"><i
+                                class="text-green-500 font-semibold">+{{ $users['this_month'] }}</i> this month
                         </div>
                     </div>
                 </span>
 
             </div>
-            <!-- Sellers Count -->
-            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg h-32 md:h-64">
+            <!-- Stores Count -->
+            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg py-5">
                 <span class="flex md:flex-col gap-3 justify-center items-center">
                     <span class="flex justify-center">
                         <svg class="w-20 h-20 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -34,16 +35,16 @@
                         </svg>
                     </span>
                     <div class="text-green-700 dark:text-gray-300 md:text-center">
-                        <span class="font-bold text-3xl">380</span>
+                        <span class="font-bold text-3xl">{{ $stores['total'] }}</span>
                         <span class="">stores</span>
-                        <div class="text-xs text-gray-500"><i class="text-green-500 font-semibold">+120</i> this month
+                        <div class="text-xs text-gray-500"><i
+                                class="text-green-500 font-semibold">+{{ $stores['this_month'] }}</i> this month
                         </div>
                     </div>
                 </span>
-
             </div>
-            <!-- Customers Count -->
-            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg h-32 md:h-64">
+            <!-- Sellers Count -->
+            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg py-5">
                 <span class="flex md:flex-col gap-3 justify-center items-center">
                     <span class="flex justify-center">
                         <svg class="w-20 h-20 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -52,19 +53,20 @@
                                 d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
                                 clip-rule="evenodd" />
                         </svg>
-
                     </span>
                     <div class="text-green-700 dark:text-gray-300 md:text-center">
-                        <span class="font-bold text-3xl">2390</span>
-                        <span class="">customers</span>
-                        <div class="text-xs text-gray-500"><i class="text-green-500 font-semibold">+120</i> this month
+                        <span class="font-bold text-3xl">{{ $users['sellers']['total'] }}</span>
+                        <span class="">sellers</span>
+                        <div class="text-xs text-gray-500"><i
+                                class="text-green-500 font-semibold">+{{ $users['sellers']['this_month'] }}</i> this
+                            month
                         </div>
                     </div>
                 </span>
 
             </div>
             <!-- Products Count -->
-            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg h-32 md:h-64">
+            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg py-5">
                 <span class="flex md:flex-col gap-3 justify-center items-center">
                     <span class="flex justify-center">
                         <svg class="w-20 h-20 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -76,24 +78,38 @@
 
                     </span>
                     <div class="text-green-700 dark:text-gray-300 md:text-center">
-                        <span class="font-bold text-3xl">3892</span>
+                        <span class="font-bold text-3xl">{{ $products['total'] }}</span>
                         <span class="">products</span>
-                        <div class="text-xs text-gray-500"><i class="text-green-500 font-semibold">+120</i> this month
+                        <div class="text-xs text-gray-500"><i
+                                class="text-green-500 font-semibold">+{{ $products['this_month'] }}</i> this month
                         </div>
                     </div>
                 </span>
 
             </div>
-
+            <!-- Products Count -->
+            <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg py-5">
+                <span class="flex md:flex-col gap-3 justify-center items-center">
+                    <span class="flex justify-center">
+                        <svg class="w-20 h-20 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 17.345a4.76 4.76 0 0 0 2.558 1.618c2.274.589 4.512-.446 4.999-2.31.487-1.866-1.273-3.9-3.546-4.49-2.273-.59-4.034-2.623-3.547-4.488.486-1.865 2.724-2.899 4.998-2.31.982.236 1.87.793 2.538 1.592m-3.879 12.171V21m0-18v2.2" />
+                        </svg>
+                    </span>
+                    <div class="text-green-700 dark:text-gray-300 md:text-center">
+                        <span class="font-bold text-3xl">{{ $sales['total'] }}</span>
+                        <span class="">MAD</span>
+                        <div class="text-xs text-gray-500"><i
+                                class="text-green-500 font-semibold">+{{ $sales['this_month'] }}</i> this month
+                        </div>
+                    </div>
+                </span>
+            </div>
         </div>
         <!-- Categories chart -->
-        <div class="border border-dashed rounded-lg border-green-400 h-96 mb-4">
-
-        </div>
-        <!--  -->
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <div class="border border-dashed rounded-lg border-green-400 h-48 md:h-72"></div>
-            <div class="border border-dashed rounded-lg border-green-400 h-48 md:h-72"></div>
+        <div class="border border-dashed rounded-lg border-green-400 mb-4">
+            <canvas id="categoryChart"></canvas>
         </div>
         <!-- Recent activity -->
         <div class="flex flex-col border border-dashed rounded-lg border-green-400 h-96 mb-4 p-2">
@@ -107,8 +123,8 @@
                         Last 24h
                         <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" d="m1 1 4 4 4-4" />
                         </svg>
                     </button>
                     <!-- Dropdown menu -->
@@ -157,165 +173,79 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="{{ asset('default_user_photo.png') }}"
-                                    alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
-                                </div>
-                            </th>
-                            <td class="px-2 md:px-6 py-4">
-                                Active
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> #23978</div>
-                                </div>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <!-- Modal toggle -->
-                                <span href="#" type="button"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
-                                    ago</span>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> $ 29.50</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="{{ asset('default_user_photo.png') }}"
-                                    alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
-                                </div>
-                            </th>
-                            <td class="px-2 md:px-6 py-4">
-                                Active
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> #23978</div>
-                                </div>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <!-- Modal toggle -->
-                                <span href="#" type="button"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
-                                    ago</span>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> $ 29.50</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="{{ asset('default_user_photo.png') }}"
-                                    alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
-                                </div>
-                            </th>
-                            <td class="px-2 md:px-6 py-4">
-                                Active
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> #23978</div>
-                                </div>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <!-- Modal toggle -->
-                                <span href="#" type="button"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
-                                    ago</span>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> $ 29.50</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="{{ asset('default_user_photo.png') }}"
-                                    alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
-                                </div>
-                            </th>
-                            <td class="px-2 md:px-6 py-4">
-                                Active
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> #23978</div>
-                                </div>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <!-- Modal toggle -->
-                                <span href="#" type="button"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
-                                    ago</span>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> $ 29.50</div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="overflow-x-scroll scrollbar-hidden flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                                <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
-                                    src="{{ asset('default_user_photo.png') }}"
-                                    alt="Jese image">
-                                <div class="ps-3">
-                                    <div class="max-w-30 font-semibold">Salaheddine DAHA</div>
-                                </div>
-                            </th>
-                            <td class="px-2 md:px-6 py-4">
-                                Active
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> #23978</div>
-                                </div>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <!-- Modal toggle -->
-                                <span href="#" type="button"
-                                    class="font-medium text-green-600 dark:text-green-500 hover:underline">3 min
-                                    ago</span>
-                            </td>
-                            <td class="px-2 md:px-6 py-4">
-                                <div class="flex items-center">
-                                    <div class="me-2"> $ 29.50</div>
-                                </div>
-                            </td>
-                        </tr>
+                        @unless ($orders['last_24h']->isEmpty())
+                            @foreach ($orders['last_24h'] as $order)
+                                <tr
+                                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <th scope="row"
+                                        class="overflow-x-scroll scrollbar-hide flex items-center px-2 md:px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
+                                        <img class="w-7 h-7 md:w-10 md:h-10 rounded-full"
+                                            src="{{ asset('default_user_photo.png') }}" alt="Jese image">
+                                        <div class="ps-3">
+                                            <div class="max-w-30 font-semibold">{{ $order->user->name }}</div>
+                                        </div>
+                                    </th>
+                                    <td class="px-2 md:px-6 py-4">
+                                        {{ $order->user->status }}
+                                    </td>
+                                    <td class="px-2 md:px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="me-2">#{{ $order->id }}</div>
+                                        </div>
+                                    </td>
+                                    <td class="px-2 md:px-6 py-4">
+                                        <span href="#" type="button"
+                                            class="font-medium text-green-600 dark:text-green-500 hover:underline">
+                                            {{ Carbon\Carbon::parse($order->created_at)->diffForHumans() }}
+                                        </span>
+                                    </td>
+                                    <td class="px-2 md:px-6 py-4">
+                                        <div class="flex items-center">
+                                            <div class="me-2">MAD {{ $order->total_amount }}</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td colspan="5" class="text-center py-4">No recent activity</td>
+                            </tr>
+                        @endunless
                     </tbody>
                 </table>
             </div>
 
         </div>
     </div>
+    <script>
+        // Get chart data from PHP
+        var chartData = @json($chartData);
+
+        // Prepare data for Chart.js
+        var labels = Object.keys(chartData);
+        var data = Object.values(chartData);
+
+        // Create chart
+        var ctx = document.getElementById('categoryChart').getContext('2d');
+        var categoryChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Number of Products',
+                    data: data,
+                    backgroundColor: 'rgb(14, 159, 110)',
+                    borderColor: 'rgb(14, 159, 110)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </x-admin-layout>

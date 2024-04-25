@@ -5,6 +5,7 @@ namespace App\RepositoriesInterfaces;
 interface ProductRepositoryInterface
 {
     public function latest();
+    public function getThisMonthCount();
     public function getAll();
     public function whereBelongsToStore($store, $category);
     public function find($id);

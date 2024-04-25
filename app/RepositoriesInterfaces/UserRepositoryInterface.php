@@ -2,14 +2,15 @@
 
 namespace App\RepositoriesInterfaces;
 
-use App\Models\User;
-use Illuminate\Pagination\LengthAwarePaginator;
-
 interface UserRepositoryInterface
 {
-    public function list() : LengthAwarePaginator;
-    public function findById($id) : User;
-    public function findByEmail($email) : User;
+    public function all();
+    public function list();
+    public function getThisMonthCount();
+    public function findById($id);
+    public function findByEmail($email);
     public function storeOrUpdate($id = null, $collection = []);
     public function destroyById($object);
+    public function getCustomers();
+    public function getSellers();
 }

@@ -25,6 +25,7 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     @vite(['resources/css/app.css', 'resources/js/theme.js'])
 </head>
@@ -79,8 +80,7 @@
                         class="flex items-center mx-2 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                         id="user-menu-button" aria-expanded="false" data-dropdown-toggle="dropdown">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full"
-                            src="{{ asset('default_user_photo.png') }}"
+                        <img class="w-8 h-8 rounded-full" src="{{ asset('default_user_photo.png') }}"
                             alt="user photo" />
                         <span class="hidden md:block p-2 text-gray-700 dark:text-gray-300">Admin</span>
                     </button>
@@ -88,8 +88,10 @@
                     <div class="hidden z-50 my-4 w-56 text-base list-none bg-white overflow-hidden divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
                         id="dropdown">
                         <div class="py-3 px-4">
-                            <span class="block text-sm font-semibold text-gray-900 dark:text-white">{{ auth()->user()->name }}</span>
-                            <span class="block text-sm text-gray-900 truncate dark:text-white">{{ auth()->user()->name }}</span>
+                            <span
+                                class="block text-sm font-semibold text-gray-900 dark:text-white">{{ auth()->user()->name }}</span>
+                            <span
+                                class="block text-sm text-gray-900 truncate dark:text-white">{{ auth()->user()->name }}</span>
                         </div>
                         <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                             <li>
@@ -100,7 +102,7 @@
                         </ul>
                         <ul class="py-1 text-gray-700 dark:text-gray-300" aria-labelledby="dropdown">
                             <li>
-                                <a href="{{ route("logout") }}"
+                                <a href="{{ route('logout') }}"
                                     class="flex gap-2 py-2 px-4 text-sm hover:bg-green-200 dark:hover:bg-gray-600 dark:hover:text-white">
                                     <span>
                                         <svg class="w-6 h-6 text-gray-800 dark:text-white rotate-180" aria-hidden="true"
@@ -128,7 +130,7 @@
             <div class="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
                 <ul class="space-y-2">
                     <li class="statistics rounded">
-                        <a href="#"
+                        <a href="{{ route('dashboard') }}"
                             class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-green-200 dark:hover:bg-green-700 group">
                             <svg aria-hidden="true"
                                 class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -170,9 +172,16 @@
                                 <a href="#"
                                     class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-green-200 dark:text-white dark:hover:bg-green-700">Sellers</a>
                             </li>
-                            <li class="seller-requests rounded">
+                            <li class="seller-requests relative rounded">
                                 <a href="{{ route('sellerRequests.index') }}"
-                                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-green-200 dark:text-white dark:hover:bg-green-700">Seller Requests</a>
+                                    class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-green-200 dark:text-white dark:hover:bg-green-700">
+                                    Seller Requests
+                                </a>
+                                @unless($seller_requests_count == 0)
+                                    <span class=" rounded-full bg-yellow-200 absolute top-0 right-0 p-1">
+                                        {{ $seller_requests_count }}
+                                    </span>
+                                @endunless
                             </li>
                         </ul>
                     </li>

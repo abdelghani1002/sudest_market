@@ -9,7 +9,15 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserRepository implements UserRepositoryInterface
 {
-    protected $user = null;
+    public function all()
+    {
+        return User::all();
+    }
+
+    public function getThisMonthCount()
+    {
+        return User::whereMonth('created_at', now()->month)->count();
+    }
 
     public function list(): LengthAwarePaginator
     {
@@ -48,5 +56,19 @@ class UserRepository implements UserRepositoryInterface
     public function destroyById($id)
     {
         return User::find($id)->delete();
+    }
+
+    public function getCustomers()
+    {
+        return User::all()->filter(function ($user) {
+            return $user->hasRole('customer');
+        });
+    }
+
+    public function getSellers()
+    {
+        return User::all()->filter(function ($user) {
+            return $user->hasRole('seller');
+        });
     }
 }

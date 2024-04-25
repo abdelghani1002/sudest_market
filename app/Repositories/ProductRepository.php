@@ -12,6 +12,11 @@ class ProductRepository implements ProductRepositoryInterface
         return Product::latest()->paginate(6);
     }
 
+    public function getThisMonthCount()
+    {
+        return Product::whereMonth('created_at', now()->month)->count();
+    }
+
     public function getAll()
     {
         return Product::all();
