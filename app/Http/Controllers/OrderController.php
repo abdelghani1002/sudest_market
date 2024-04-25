@@ -20,18 +20,20 @@ class OrderController extends Controller
             return PayementController::pay($order, $back_url);
         }
 
-        if (!OrderController::is_order_available($order)) {
-            return redirect()->back()->with('error', 'Order is not available');
-        }
-
         $cart = session()->get('cart');
         $user = auth()->user();
         $order = $user->orders()->create([
             'total_amount' => $cart['total']
         ]);
 
+
         foreach ($cart['products'] as $product) {
             $order->products()->attach($product->id, ['units' => $product->units]);
+        }
+
+        $order->refresh();
+        if (!OrderController::is_order_available($order)) {
+            return redirect()->back()->with('error', 'Order is not available');
         }
 
         $back_url = $request->header('referer');
