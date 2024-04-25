@@ -9,10 +9,10 @@
                     <h2 class="mb-6 text-sm font-semibold uppercase text-white">Resources</h2>
                     <ul class="text-gray-400 font-medium">
                         <li class="mb-4">
-                            <a href="https://flowbite.com/" class="hover:underline">Flowbite</a>
+                            <a href="https://flowbite.com/" class="hover:underline">SudEst Market</a>
                         </li>
                         <li>
-                            <a href="https://tailwindcss.com/" class="hover:underline">Tailwind CSS</a>
+                            <a href="https://tailwindcss.com/" class="hover:underline">Tinghir</a>
                         </li>
                     </ul>
                 </div>
@@ -43,7 +43,7 @@
         <hr class="my-6  sm:mx-auto border-gray-700 lg:my-8" />
         <div class="sm:flex sm:items-center sm:justify-between">
             <span class="text-sm sm:text-center text-gray-400">&copy; 2024 <a href="https://flowbite.com/"
-                    class="hover:underline">Sud-Est</a>. All Rights Reserved.
+                    class="hover:underline">Sudst Market</a>. All Rights Reserved.
             </span>
             <div class="flex mt-4 sm:justify-center sm:mt-0">
                 <a href="#" class="text-gray-400 hover:text-white">
