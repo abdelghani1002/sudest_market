@@ -1,4 +1,4 @@
-<x-app-layout :cart="$cart">
+<x-app-layout>
     <x-hero-section />
     <x-categories :categories="$categories" />
     <div class="bg-blue-100 dark:bg-gray-800 px-4 py-8">

@@ -25,7 +25,7 @@
     @vite(['resources/css/app.css', 'resources/js/theme.js'])
 </head>
 
-<body class="font-sans dark:bg-gray-900">
+<body class="font-sans dark:bg-gray-900 overflow-x-hidden">
     {{-- Preloader --}}
     <x-preloader />
 

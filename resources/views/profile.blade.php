@@ -148,7 +148,7 @@
                 <h3 class="text-3xl font-bold dark:text-gray-300 mb-4">My orders</h3>
                 <div class="">
                     <div class="w-full py-2 align-middle md:px-6 lg:px-8">
-                        <div class="border border-gray-200 dark:border-gray-700 md:rounded-lg overflow-x-scroll">
+                        <div class="border border-gray-200 dark:border-gray-700 md:rounded-lg overflow-x-scroll max-h-screen">
                             <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                 <thead class="bg-gray-50 dark:bg-slate-800">
                                     <tr>
