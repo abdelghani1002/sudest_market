@@ -87,7 +87,7 @@
                 </span>
 
             </div>
-            <!-- Products Count -->
+            <!-- Sales Count -->
             <div class="flex justify-center items-center border border-dashed border-green-400 rounded-lg py-5">
                 <span class="flex md:flex-col gap-3 justify-center items-center">
                     <span class="flex justify-center">

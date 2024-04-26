@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\User;
 use App\RepositoriesInterfaces\UserRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -24,7 +25,7 @@ class UserRepository implements UserRepositoryInterface
         return User::paginate(10);
     }
 
-    public function findById($id): User
+    public function findById($id): User | Collection | null
     {
         return User::find($id);
     }

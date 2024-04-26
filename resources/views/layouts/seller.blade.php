@@ -25,6 +25,8 @@
             document.documentElement.classList.remove('dark')
         }
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     @vite(['resources/css/app.css', 'resources/js/theme.js'])
 </head>
@@ -197,7 +199,7 @@
                             @unless ($store->categories == null)
                                 @foreach ($store->categories as $category)
                                     <li class="sellers rounded">
-                                        <a href="{{ route("seller.mystore.categories.show", $category) }}"
+                                        <a href="{{ route('seller.mystore.categories.show', $category) }}"
                                             class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-green-200 dark:text-white dark:hover:bg-green-700">{{ $category->name }}</a>
                                     </li>
                                 @endforeach
