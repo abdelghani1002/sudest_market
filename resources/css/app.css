@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+#logo_text {
+    background: -webkit-linear-gradient(left, #0ebc4b, #33f603, #01ac01);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family:'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
 
 /* tags */
 li *{
@@ -51,18 +57,22 @@ li *{
     position: absolute;
 }
 
-@keyframes rotate360 {
+@keyframes bomb {
     0% {
-        transform: rotate(0deg);
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.3);
     }
 
     100% {
-        transform: rotate(360deg);
+        transform: scale(1);
     }
 }
 
 .preloader .icon img {
-    animation: rotate360 2s infinite linear;
+    animation: bomb 1s infinite linear;
 }
 
 .category-card:hover {
