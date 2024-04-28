@@ -36,9 +36,12 @@ class Store extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function getTotalSales()
+    public function getTotalSales($date = null)
     {
-        return $this->products->sum(function ($product) {
+        return $this->products->sum(function ($product) use ($date){
+            if ($date) {
+                return $product->orders->where('created_at', '>=', $date)->sum('pivot.units');
+            }
             return $product->orders->sum('pivot.units');
         });
     }

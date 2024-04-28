@@ -16,7 +16,7 @@
                     <div class="text-green-700 dark:text-gray-300 md:text-center">
                         <span class="font-bold text-3xl">{{ $sales['total'] }}</span>
                         <span class="">units</span>
-                        <div class="text-xs text-gray-500"><i class="text-green-500 font-semibold">+34</i> this month
+                        <div class="text-xs text-gray-500"><i class="text-green-500 font-semibold">+{{ $sales['this_month'] }}</i> this month
                         </div>
                     </div>
                 </span>
@@ -56,7 +56,7 @@
                         <span class="font-bold text-3xl">{{ $customers['total'] }}</span>
                         <span class="">customers</span>
                         <div class="text-xs text-gray-500"><i
-                                class="text-green-500 font-semibold">+{{ $customers['this_month'] }}</i> this month
+                                class="text-green-500 font-semibold">+##</i> this month
                         </div>
                     </div>
                 </span>

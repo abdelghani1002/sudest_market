@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Seller;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Order;
-use App\Models\Store;
-use App\Repositories\CategoryRepository;
 use App\RepositoriesInterfaces\CategoryRepositoryInterface;
 use App\RepositoriesInterfaces\ProductRepositoryInterface;
 use App\RepositoriesInterfaces\UserRepositoryInterface;
@@ -34,6 +31,7 @@ class SellerController extends Controller
         // calc some statistics
         $sales = [
             'total' => $store->getTotalSales(),
+            'this_month' => $store->getTotalSales(now()->startOfMonth()),
             'total_amount' => $store->products->sum(function ($product) {
                 return $product->orders->sum('pivot.units') * $product->price;
             }),
@@ -46,9 +44,9 @@ class SellerController extends Controller
             return $product->orders->pluck('user_id');
         })->flatten()->unique();
         $customers_collection = $this->userRepository->findById($customers_ids);
+        // Calc the total customers and the new customers that place some orders this month
         $customers =[
             'total' => $customers_ids->count(),
-            'this_month' => $customers_collection->where('created_at', '>=', now()->startOfMonth())->count(),
         ];
 
         // Calc the best selling product with the highest sales count
