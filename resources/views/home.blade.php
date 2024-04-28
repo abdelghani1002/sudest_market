@@ -24,7 +24,7 @@
         <div class="mb-5 px-5 md:px-8 lg:mx-24">
             <x-search :categories="$categories" />
         </div>
-        <div>
+        <section id="products">
             <div id="place_result" class="flex flex-wrap px-2 md:px-6 gap-2 pb-10 pt-2 justify-center w-full">
                 @unless ($products->isEmpty())
                     @foreach ($products as $product)
@@ -39,7 +39,7 @@
                     {{ $products->links('pagination::simple-tailwind') }}
                 </div>
             </div>
-        </div>
+        </section>
     </div>
     @vite(['resources/js/search.js', 'resources/js/categories.js', 'resources/js/favorites.js'])
 </x-app-layout>

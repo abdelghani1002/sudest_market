@@ -69,3 +69,11 @@ deleteForms.forEach(form => {
         }
     });
 });
+
+// check if the URL contains page= and scroll to the products section
+if(window.location.href.includes('page=')){
+    let productsSection = document.getElementById('products');
+    if(productsSection){
+        productsSection.scrollIntoView();
+    }
+}
