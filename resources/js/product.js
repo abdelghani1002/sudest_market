@@ -67,8 +67,8 @@ increment.addEventListener('click', function () {
     let qty = parseInt(quantity.value);
     if (qty < product_qyt && qty < 10) {
         quantity.value = qty + 1;
-    } else {
-        quantity.value = product_qyt;
+    } else if (product_qyt >= 10) {
+        quantity.value = 10;
     }
     units.value = quantity.value;
 });
