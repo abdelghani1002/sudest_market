@@ -22,12 +22,14 @@ $(document).ready(function() {
             showConfirmButton: false,
             timer: 4000,
         });
+        $('p[data-icon="success"]').remove();
     } else if (errorAlert.length > 0) {
         Swal.fire({
             icon: 'error',
             title: errorAlert.attr('data-title'),
             text: errorAlert.text()
         });
+        $('p[data-icon="error"]').remove();
     } else if (infoAlert.length > 0){
         Swal.fire({
             position: 'bottom-end',
@@ -38,6 +40,7 @@ $(document).ready(function() {
             showConfirmButton: false,
             timer: 4000,
         });
+        $('p[data-icon="info"]').remove();
     }
 });
 
